@@ -1,4 +1,3 @@
-
 import pymongo
 from app.models.model import Model
 
@@ -13,7 +12,9 @@ class User(Model):
         return users
 
     def find_by_name(self, username):
-        users = list(self.collection.find({"username": name}))
+        users = list(self.collection.find({"username": username}))
         for user in users:
             user["_id"] = str(user["_id"])
         return users
+
+

@@ -2,6 +2,7 @@ attrs==20.3.0
 bson==0.5.10
 click==7.1.2
 Flask==1.1.2
+Flask-Cors==3.0.10
 iniconfig==1.1.1
 itsdangerous==1.1.0
 Jinja2==2.11.3
