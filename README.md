@@ -1,10 +1,16 @@
-# csc307-doit
-### This repo holds all of the code for the DO-IT web app created for CSC 307
+BUILD INSTRUCTIONS:
 
-### Development
-* Frontend
-   * Frontend development is being done using React
-* Backend
-   * Backend development is done using python and the library "flask"
-* Database
-   * All database activity will be performed using MongoDB
+1. Create virtual environment
+Ex: python3 -m venv venv 
+
+1-a. Activate virtual environment
+Ex: source venv/bin/activate 
+
+2. Download requirements
+Ex: pip install -r requirements.txt
+
+3. Set FLASK_APP environmental variable
+Ex: export FLASK_APP=doit.py
+
+4. Run backend
+Ex: flask run

@@ -1,2 +1,6 @@
 venv
 .vscode
+
+__pycache__
+app/__pycache__
+app/routes/__pycache__
