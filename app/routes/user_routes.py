@@ -1,9 +1,12 @@
 from app import app
+from app.models.users import User
 
-@app.route('/login')
-def login_route(methods=['GET', 'POST']):
+from flask import request
+
+@app.route('/login', methods=['GET', 'POST'])
+def login_route():
     return 'Login route'
 
-@app.route('/register')
-def register_route(methods=['GET', 'POST']):
-    return 'Register route'
+@app.route('/register', methods=['GET', 'POST'])
+def register_route():
+    return {}, 201
