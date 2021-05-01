@@ -3,6 +3,13 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 from app import create_app
+from app.database import mongo
+
+@pytest.fixture(scope='session')
+def db(app):
+    for collection in mongo.db.list_collection_names():
+        mongo.db.drop_collection(collection)
+    return mongo.db
 
 @pytest.fixture(scope='session')
 def app():
