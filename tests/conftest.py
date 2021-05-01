@@ -5,7 +5,7 @@ import pytest
 from app import create_app
 from app.database import mongo
 
-@pytest.fixture(scope='session')
+@pytest.fixture()
 def db(app):
     for collection in mongo.db.list_collection_names():
         mongo.db.drop_collection(collection)
