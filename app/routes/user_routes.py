@@ -1,4 +1,4 @@
-from app.models.users import add_user
+from app.models.users import add_user, validate_password
 from flask.globals import current_app as app
 from flask import request
 
@@ -6,7 +6,15 @@ from app.database import mongo
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_route():
-    return 'Login route'
+    if request.method == 'POST':
+        if not request.json:
+            return {}, 400
+        if not set(request.json.keys()).issubset({'username', 'password_hash'}):
+            return {}, 400
+        if not validate_password(request.json['username'], request.json['password_hash']):
+            return {}, 401
+        return {}, 200
+    return {}, 202
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_route():

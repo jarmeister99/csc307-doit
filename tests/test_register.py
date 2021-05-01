@@ -21,9 +21,14 @@ def test_register_username_success(client, db):
 def test_register_username_taken(client, db):
     data = {'username': 'taken', 'password_hash': 0xABCD, 'email': 'email@address.com'}
     client.post('/register', json=data, content_type='application/json')
+    l1 = db['users'].count_documents({})
+
     data = {'username': 'taken', 'password_hash': 0xABCD, 'email': 'email@address.com'}
     resp = client.post('/register', json=data, content_type='application/json')
+    l2 = db['users'].count_documents({})
+
     assert(resp.status_code == 403) # forbidden request
+    assert(l1 == l2) # collection length didnt change
 
 
 
