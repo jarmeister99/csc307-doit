@@ -11,7 +11,7 @@ def login_route():
             return {}, 400
         if not set(request.json.keys()).issubset({'username', 'password_hash'}):
             return {}, 400
-        if not User().validate_password(request.json['username'], request.json['password_hash']):
+        if not User.login_user(username=request.json['username'], password_hash=request.json['password_hash']):
             return {}, 401
         return {}, 200
     return {}, 202
@@ -23,7 +23,7 @@ def register_route():
             return {}, 400
         if not set(request.json.keys()).issubset({'username', 'password_hash', 'email'}):
             return {}, 400
-        if not User().add_user(request.json['username'], request.json['password_hash'], request.json['email']):
+        if not User.register_user(username=request.json['username'], password_hash=request.json['password_hash'], email=request.json['email']):
             return {}, 403
         return {}, 201
     return {}, 202
