@@ -1,12 +1,12 @@
 import uuid
 from bson.objectid import ObjectId
 
+from flask_login.mixins import UserMixin
+
 from app.login import login_manager
 from app.database import mongo
-db = mongo.db
 
-
-class User():
+class User(UserMixin):
     def __init__(self, username, email, password_hash, _id=None):
 
         self.username = username
@@ -14,30 +14,30 @@ class User():
         self.password_hash = password_hash
         self._id = uuid.uuid4().hex if _id is None else _id
 
-    def is_authenticated(self):
-        return True
-    def is_active(self):
-        return True
-    def is_anonymous(self):
-        return True
-    def get_if(self):
+    # def is_authenticated(self):
+    #     return True
+    # def is_active(self):
+    #     return True
+    # def is_anonymous(self):
+    #     return True
+    def get_id(self):
         return self._id
 
     @classmethod
     def get_by_username(cls, username):
-        data = db['users'].find_one({'username': username}) 
+        data = mongo.db['users'].find_one({'username': username}) 
         if data is not None:
             return cls(**data)
         
     @classmethod
     def get_by_email(cls, email):
-        data = db['users'].find_one({'email': email}) 
+        data = mongo.db['users'].find_one({'email': email}) 
         if data is not None:
             return cls(**data)
 
     @classmethod
     def get_by_id(cls, _id):
-        data = db['users'].find_one({'_id': _id}) 
+        data = mongo.db['users'].find_one({'_id': _id}) 
         if data is not None:
             return cls(**data)
 
@@ -66,12 +66,8 @@ class User():
         }
 
     def save_to_db(self):
-        db['users'].insert_one(self.json())
+        mongo.db['users'].insert_one(self.json())
 
 @login_manager.user_loader
 def load_user(user_id):
-    return db['users'].find_one({'_id': ObjectId(user_id)})
-
-
-
-
+    return mongo.db['users'].find_one({'_id': ObjectId(user_id)})

@@ -1,6 +1,7 @@
 from app.models.users import User
 from flask.globals import current_app as app
 from flask import request
+from flask_login import login_user
 
 from app.database import mongo
 
@@ -11,8 +12,10 @@ def login_route():
             return {}, 400
         if not set(request.json.keys()).issubset({'username', 'password_hash'}):
             return {}, 400
-        if not User.login_user(username=request.json['username'], password_hash=request.json['password_hash']):
+        if not User.login_user(username=request.json['username'], password_hash=request.json['password_hash']): # validate password
             return {}, 401
+        user = User.get_by_username(request.json['username']) 
+        login_user(user)
         return {}, 200
     return {}, 202
 
