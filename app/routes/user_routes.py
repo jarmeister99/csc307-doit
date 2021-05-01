@@ -17,7 +17,6 @@ def login_route():
         user = User.get_by_username(request.json['username']) 
         login_user(user)
         return {}, 200
-    return {}, 202
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_route():
