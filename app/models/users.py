@@ -1,6 +1,16 @@
+from bson.objectid import ObjectId
 
+from app.login import login_manager
 from app.database import mongo
 db = mongo.db
+
+
+class User():
+    pass
+
+@login_manager.user_loader
+def load_user(user_id):
+    return db['users'].find_one({'_id': ObjectId(id)})
 
 def validate_password(username: str, password_hash: int):
     user = {
