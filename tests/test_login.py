@@ -16,6 +16,11 @@ def test_login_incorrect_data(client):
     resp = client.post('/login', json=data, content_type='application/json')
     assert(resp.status_code == 400) # bad request
 
+def test_login_missing_password(client):
+    data={'username': 'jared'}
+    resp = client.post('/login', json=data, content_type='application/json') # log in user
+    assert(resp.status_code == 400) # bad request
+
 def test_login_correct_password(client, db):
     data = {'username': 'jared', 'password_hash': 0xABCD, 'email': 'email@address.com'}
     resp = client.post('/register', json=data, content_type='application/json') # create user

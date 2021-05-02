@@ -10,7 +10,7 @@ def login_route():
     if request.method == 'POST':
         if not request.json:
             return {}, 400
-        if not set(request.json.keys()).issubset({'username', 'password_hash'}):
+        if request.json.get('username') is None or request.json.get('password_hash') is None:
             return {}, 400
         if not User.login_user(username=request.json['username'], password_hash=request.json['password_hash']): # validate password
             return {}, 401
@@ -23,7 +23,7 @@ def register_route():
     if request.method == 'POST':
         if not request.json:
             return {}, 400
-        if not set(request.json.keys()).issubset({'username', 'password_hash', 'email'}):
+        if request.json.get('username') is None or request.json.get('password_hash') is None or request.json.get('email') is None:
             return {}, 400
         if not User.register_user(username=request.json['username'], password_hash=request.json['password_hash'], email=request.json['email']):
             return {}, 403
