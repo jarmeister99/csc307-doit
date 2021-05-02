@@ -28,4 +28,3 @@ def register_route():
         if not User.register_user(username=request.json['username'], password_hash=request.json['password_hash'], email=request.json['email']):
             return {}, 403
         return {}, 201
-    return {}, 202
