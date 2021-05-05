@@ -1,10 +1,7 @@
 import os, sys
-from flask_login.mixins import AnonymousUserMixin
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import pytest
 from app.models.users import User
-
 from flask_login import current_user
 
 def test_login_no_data(client):
