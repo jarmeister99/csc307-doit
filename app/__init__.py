@@ -29,7 +29,6 @@ def create_app(db_uri: str):
     with app.app_context():
         # include our routes
         from app.routes import user_routes
-        from app.routes import view_routes
 
         return app
 
