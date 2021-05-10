@@ -5,9 +5,10 @@ import Footer from "./components/Footer"
 import Home from "./components/Home"
 import Login from "./components/Login"
 
+
 function MyApp() {
   return (
-    <div className="MyApp">
+    <div id="MyApp">
       <Router>
         <Navigation />
         <Switch>

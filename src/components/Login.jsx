@@ -1,62 +1,73 @@
 import React, {useState} from "react";
 import "../index.css"
+import axios from 'axios';
 
 function Login() {
     const [credentials, setCredentials] = useState(
         {
             username: '',
-            password: '',
+            password_hash: '',
         }
     );
 
     function handleChange(event) {
         const { name, value } = event.target;
-        console.log(name);
-        console.log(value);
         if (name === "password")
         setCredentials(
-            {name: credentials['username'], password: value}
+            {username: credentials['username'], password_hash: value}
         );
-        else     
+        else
         setCredentials(
-            {name: value, password: credentials['password']}   
+            {username: value, password_hash: credentials['password_hash']}   
         );
     }
 
-    function checkLogin(credentials) {
-        // make a post call to check agains the api and check the login information
-        console.log(credentials);
-    }
+
+    async function checkLogin(credentials){
+        try {
+           const response = await axios.post('http://localhost:5000/login', credentials);
+           console.log("here");
+           return response;
+        }
+        catch (error) {
+           console.log(error);
+           console.log("also here");
+           return false;
+        }
+     }
+
 
     function submitLogin() {
-        checkLogin(credentials);
-        setCredentials({username: '', password: ''});
+        console.log(credentials);
+        checkLogin(credentials).then( result => {
+            console.log(result.status);
+            });
+        setCredentials({username: '', password_hash: ''});
     }
+
 
     return (
         <form>
-            <div className="col-sm-10 form-group-lg">
-                <div className="column">
-                    <label htmlFor="username">username</label>
-                    <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        value={credentials.username}
-                        onChange={handleChange} />
-                </div>
-                <div className="column">
-                    <label htmlFor="password">password</label>
-                    <input
-                        type="text"
-                        name="password"
-                        id="password"
-                        value={credentials.password}
-                        onChange={handleChange} />
-                </div>
-                <div className="column">
-                    <input type="button" value="Submit" onClick={submitLogin} />
-                </div>
+            <div>
+                <label htmlFor="username">username</label>
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    value={credentials.username}
+                    onChange={handleChange} />
+            </div>
+            <div>
+                <label htmlFor="password">password</label>
+                <input
+                    type="text"
+                    name="password"
+                    id="password"
+                    value={credentials.password_hash}
+                    onChange={handleChange} />
+            </div>
+            <div>
+                <input type="button" value="Submit" onClick={submitLogin} />
             </div>
         </form>
     );
