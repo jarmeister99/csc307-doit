@@ -4,42 +4,42 @@ import { Link, withRouter } from "react-router-dom";
 function Navigation(props) {
   return (
     <div className="navigation">
-      <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="container">
-          <Link class="navbar-brand" to="/">
+      <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <div className="container">
+          <Link className="navbar-brand" to="/">
             Do It!
           </Link>
 
           <div>
-            <ul class="navbar-nav ml-auto">
+            <ul className="navbar-nav ml-auto">
               <li
-                class={`nav-item  ${
+                className={`nav-item  ${
                   props.location.pathname === "/" ? "active" : ""
                 }`}
               >
-                <Link class="nav-link" to="/">
+                <Link className="nav-link" to="/">
                   Home
-                  <span class="sr-only">(current)</span>
+                  <span className="sr-only">(current)</span>
                 </Link>
               </li>
               <li
-                class={`nav-item  ${
+                className={`nav-item  ${
                   props.location.pathname === "/login" ? "active" : ""
                 }`}
               >
-                <Link class="nav-link" to="/login">
+                <Link className="nav-link" to="/login">
                   Login
-                  <span class="sr-only">(current)</span>
+                  <span className="sr-only">(current)</span>
                 </Link>
               </li>
               <li
-                class={`nav-item  ${
+                className={`nav-item  ${
                   props.location.pathname === "/register" ? "active" : ""
                 }`}
               >
-                <Link class="nav-link" to="/register">
+                <Link className="nav-link" to="/register">
                   Sign Up
-                  <span class="sr-only">(current)</span>
+                  <span className="sr-only">(current)</span>
                 </Link>
               </li>
             </ul>

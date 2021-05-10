@@ -41,7 +41,7 @@ function Login() {
         console.log(credentials);
         checkLogin(credentials).then( result => {
             console.log(result.status);
-            });
+            });    
         setCredentials({username: '', password_hash: ''});
     }
 
@@ -68,6 +68,7 @@ function Login() {
             </div>
             <div>
                 <input type="button" value="Submit" onClick={submitLogin} />
+
             </div>
         </form>
     );
