@@ -50,7 +50,7 @@ function Login() {
     return (
         <div className="col-md-3">
             <form className>
-                <div className="center">
+                <div className="username">
                     <label htmlFor="username">username‎‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎</label>
                     <input
                         type="text"
@@ -60,7 +60,7 @@ function Login() {
                         value={credentials.username}
                         onChange={handleChange} />
                 </div>
-                <div className="center2">
+                <div className="password">
                     <label htmlFor="password">password‏‏‎ ‎‏‏‎‎‏‏‎ ‎‏‏‎ ‎</label>
                     <input
                         type="password"
@@ -70,7 +70,7 @@ function Login() {
                         value={credentials.password_hash}
                         onChange={handleChange} />
                 </div>
-                <div className="center3">
+                <div className="loginbutton">
                     <input type="button" class="button" value="Login" onClick={submitLogin} />
                 </div>
             </form>
