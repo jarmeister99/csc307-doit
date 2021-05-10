@@ -60,7 +60,7 @@ function Login() {
             <div>
                 <label htmlFor="password">password</label>
                 <input
-                    type="text"
+                    type="password"
                     name="password"
                     id="password"
                     value={credentials.password_hash}
@@ -68,7 +68,6 @@ function Login() {
             </div>
             <div>
                 <input type="button" value="Submit" onClick={submitLogin} />
-
             </div>
         </form>
     );
