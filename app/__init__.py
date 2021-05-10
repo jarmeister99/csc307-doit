@@ -33,8 +33,8 @@ def create_app(db_uri: str):
 
         return app
 
-if __name__ == '__main__':
-    app = create_app('mongodb://localhost:27017/doit')
-    app.run()
+# if __name__ == '__main__':
+#     app = create_app('mongodb://localhost:27017/doit')
+#     app.run()
 
 
