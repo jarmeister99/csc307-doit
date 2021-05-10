@@ -1,6 +1,8 @@
 # csc307-doit
 ### This repo holds all of the code for the DO-IT web app created for CSC 307
 
+### There are two main branches for Frontend and Backend
+
 ### Development
 * Frontend
    * Frontend development is being done using React
