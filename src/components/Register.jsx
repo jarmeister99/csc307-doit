@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import "../index.css"
+import "./Login.css"
 import axios from 'axios';
 
 function Register() {
@@ -59,35 +60,38 @@ function Register() {
 
     return (
         <form>
-            <div>
-                <label htmlFor="username">username</label>
+            <div className="username">
+                <label htmlFor="username">username‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎</label>
                 <input
                     type="text"
                     name="username"
                     id="username"
+                    class="tbox"
                     value={credentials.username}
                     onChange={handleChange} />
             </div>
-            <div>
-                <label htmlFor="password">password</label>
+            <div className="password">
+                <label htmlFor="password">password‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎</label>
                 <input
                     type="password"
                     name="password"
                     id="password"
+                    class="tbox"
                     value={credentials.password_hash}
                     onChange={handleChange} />
             </div>
-            <div>
-                <label htmlFor="password">email</label>
+            <div className="email">
+                <label htmlFor="password">email‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎</label>
                 <input
                     type="text"
                     name="email"
                     id="email"
+                    class="tbox"
                     value={credentials.email}
                     onChange={handleChange} />
             </div>
-            <div>
-                <input type="button" value="Submit" onClick={submitLogin} />
+            <div className="registerbutton">
+                <input type="button" className="button" value="Submit" onClick={submitLogin} />
             </div>
         </form>
     );

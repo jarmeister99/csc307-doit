@@ -1,0 +1,66 @@
+.username {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -145px;
+    margin-left: -178px;
+
+}
+.password {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -110px;
+    margin-left: -176px;
+}
+.email {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -75px;
+    margin-left: -178px;
+}
+.registerbutton {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -40px;
+    margin-left: -49px;
+}
+.loginbutton {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -70px;
+    margin-left: -49px;
+}
+.button {
+    position:fixed;
+    background-color:#008CBA;
+    color:gainsboro;
+    text-align:center;
+    border-radius:4px;
+    border:none;
+    width:200px;
+    margin-left:-47px;
+
+}
+.tbox {
+    border-radius:4px;
+    border-width:1px;
+    outline:none;
+    width:200px;
+
+}
+
+

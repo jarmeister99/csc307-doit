@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import "../index.css"
+import "./Login.css"
 import axios from 'axios';
 
 function Login() {
@@ -47,29 +48,33 @@ function Login() {
 
 
     return (
-        <form>
-            <div>
-                <label htmlFor="username">username</label>
-                <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    value={credentials.username}
-                    onChange={handleChange} />
-            </div>
-            <div>
-                <label htmlFor="password">password</label>
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    value={credentials.password_hash}
-                    onChange={handleChange} />
-            </div>
-            <div>
-                <input type="button" value="Submit" onClick={submitLogin} />
-            </div>
-        </form>
+        <div className="col-md-3">
+            <form className>
+                <div className="username">
+                    <label htmlFor="username">username‎‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎</label>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        class="tbox"
+                        value={credentials.username}
+                        onChange={handleChange} />
+                </div>
+                <div className="password">
+                    <label htmlFor="password">password‏‏‎ ‎‏‏‎‎‏‏‎ ‎‏‏‎ ‎</label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        class="tbox"
+                        value={credentials.password_hash}
+                        onChange={handleChange} />
+                </div>
+                <div className="loginbutton">
+                    <input type="button" class="button" value="Login" onClick={submitLogin} />
+                </div>
+            </form>
+        </div>
     );
 }
 
