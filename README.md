@@ -1,6 +1,7 @@
 # csc307-doit
 ## This branch holds the all the Frontend Data for our app, Do It!
 
+[![Build Status](https://travis-ci.com/jarmeister99/csc307-doit.svg?branch=frontend)](https://travis-ci.com/jarmeister99/csc307-doit)
 ### Make sure that you have all the node modules installed including the one listed below
 
 #### The one extra module that we are using for routing the program is
