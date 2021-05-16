@@ -29,7 +29,7 @@ def create_app(db_uri: str):
     with app.app_context():
         # include our routes
         from app.routes import user_routes
-
+        from app.routes import task_routes
         return app
 
 # if __name__ == '__main__':
