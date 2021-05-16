@@ -17,7 +17,7 @@ function Login() {
         setCredentials(
             {username: credentials['username'], password_hash: value}
         );
-        else
+        else if (name === "username")
         setCredentials(
             {username: value, password_hash: credentials['password_hash']}   
         );
@@ -49,7 +49,7 @@ function Login() {
 
     return (
         <div className="col-md-3">
-            <form className>
+            <form>
                 <div className="username">
                     <label htmlFor="username">username‎‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎</label>
                     <input
