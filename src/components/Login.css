@@ -32,8 +32,8 @@
     left: 50%;
     justify-content: center;
     align-items: center;
-    margin-top: -40px;
-    margin-left: -49px;
+    margin-top: 105px;
+    margin-left: 257px;
 }
 .loginbutton {
     position: fixed;
@@ -41,8 +41,8 @@
     left: 50%;
     justify-content: center;
     align-items: center;
-    margin-top: -70px;
-    margin-left: -49px;
+    margin-top: 70px;
+    margin-left: 257px;
 }
 .button {
     position:fixed;
