@@ -1,3 +1,4 @@
+from app.models.tasks import Task
 from flask.globals import current_app as app
 from flask import request
 
@@ -9,9 +10,17 @@ def tasks_route():
         #save task
         if not request.json:
             return {}, 400
-        if request.json.get('name') is None:
+        if request.json.get('name') is None or request.json.get('name') == '':
             #not checking description to allow empty description
             return {},400
-        #save task here    
-        return {}, 200
+        #save task here  
+        if not Task.create_task(name=request.json['name'],description=request.json['description']):
+            return {}, 400
+        return {}, 201
+    elif request.method == 'GET':
+        #show all tasks
+        tasks = Task.get_all()
+        return tasks, 200
+        
+
 
