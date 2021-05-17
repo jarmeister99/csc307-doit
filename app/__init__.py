@@ -1,10 +1,10 @@
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from dotenv import load_dotenv, find_dotenv
+
 from flask import Flask
 from flask_cors import CORS
-
-import secret
 
 from app.database import mongo
 from app.login import login_manager
@@ -13,7 +13,13 @@ from app.login import login_manager
 def create_app(db_uri: str):
     app = Flask(__name__)
 
-    app.secret_key = secret.secret_key
+    BASEDIR = os.path.abspath(os.path.dirname(__file__))
+    load_dotenv(os.path.join(BASEDIR, '.env'), verbose=True)
+
+    x = os.getenv("SECRET_KEY")
+    print(x)
+
+    app.secret_key = os.environ.get('SECRET_KEY')
 
     # cross origin resource sharing (React <-> Flask)
     CORS(app)
@@ -32,8 +38,8 @@ def create_app(db_uri: str):
 
         return app
 
-# if __name__ == '__main__':
-#     app = create_app('mongodb://localhost:27017/doit')
-#     app.run()
+if __name__ == '__main__':
+    app = create_app('mongodb://localhost:27017/doit')
+    # app.run()
 
 
