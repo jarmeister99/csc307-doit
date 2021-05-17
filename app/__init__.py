@@ -13,12 +13,7 @@ from app.login import login_manager
 def create_app(db_uri: str):
     app = Flask(__name__)
 
-    BASEDIR = os.path.abspath(os.path.dirname(__file__))
-    load_dotenv(os.path.join(BASEDIR, '.env'), verbose=True)
-
-    x = os.getenv("SECRET_KEY")
-    print(x)
-
+    load_dotenv("app.env")
     app.secret_key = os.environ.get('SECRET_KEY')
 
     # cross origin resource sharing (React <-> Flask)
