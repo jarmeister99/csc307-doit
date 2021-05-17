@@ -1,6 +1,8 @@
 Please conform to PEP 8 as specified in:
 python.org/dev/peps/pep-0008
 
+[![Build Status](https://travis-ci.com/jarmeister99/csc307-doit.svg?branch=backend)](https://travis-ci.com/jarmeister99/csc307-doit)
+
 Ensure 'pylint *' passes before pushing to the origin
 
 BUILD INSTRUCTIONS:
