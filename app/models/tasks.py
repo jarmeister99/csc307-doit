@@ -4,11 +4,12 @@ from app.database import mongo
 from bson.json_util import dumps
 
 class Task():
-    def __init__(self, name, description, dueTime,_id=None):
+    def __init__(self, name, description, dueTime, userId=None, _id=None):
 
         self.name=name
         self.description = description
         self.dueTime = dueTime
+        self.userId = userId
         self._id = uuid.uuid4().hex if _id is None else _id
     @classmethod
     def get_by_id(cls,_id):
@@ -23,9 +24,9 @@ class Task():
         return data
         
     @classmethod
-    def create_task(cls, name, description=None, dueTime=None):
+    def create_task(cls, name, userId, description=None, dueTime=None):
         #if task is None:
-        new_task = cls(name, description, dueTime)
+        new_task = cls(name, description, dueTime,userId)
         new_task.save_to_db()
         return True
     
@@ -33,6 +34,7 @@ class Task():
     def json(self):
         return {
             '_id': self._id,
+            'userId': self.userId,
             'name': self.name,
             'description': self.description,
             'dueTime': self.dueTime
