@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "../index.css"
 import "./Login.css"
 import axios from 'axios';
+import { hashCode } from './hash.js';
 
 function Login() {
     const [credentials, setCredentials] = useState(
@@ -15,7 +16,7 @@ function Login() {
         const { name, value } = event.target;
         if (name === "password")
         setCredentials(
-            {username: credentials['username'], password_hash: value}
+            {username: credentials['username'], password_hash: hashCode(value)}
         );
         else if (name === "username")
         setCredentials(
@@ -26,13 +27,12 @@ function Login() {
 
     async function checkLogin(credentials){
         try {
-           const response = await axios.post('http://localhost:5000/login', credentials);
-           console.log("here");
-           return response;
+            console.log(credentials['password_hash'])
+            const response = await axios.post('http://localhost:5000/login', credentials);
+            return response;
         }
         catch (error) {
            console.log(error);
-           console.log("also here");
            return false;
         }
      }

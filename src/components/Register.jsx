@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "../index.css"
 import "./Login.css"
 import axios from 'axios';
+import { hashCode } from './hash.js';
 
 function Register() {
     const [credentials, setCredentials] = useState(
@@ -29,7 +30,7 @@ function Register() {
         else
         setCredentials(
             {username: credentials['username'], 
-             password_hash: credentials['password_hash'],
+             password_hash: hashCode(credentials['password_hash']),
              email: value}   
         );
     }
