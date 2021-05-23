@@ -1,4 +1,8 @@
-import os, sys
+"""
+This module is responsible for providing a create_app function for Flask to launch from
+"""
+import os
+import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dotenv import load_dotenv, find_dotenv
@@ -11,6 +15,10 @@ from app.login import login_manager
 
 # factory design pattern
 def create_app(db_uri: str):
+    """
+    This function creates and returns an instance of the Flask app with its own context
+    and database URI
+    """
     app = Flask(__name__)
 
     load_dotenv("app.env")
@@ -36,5 +44,3 @@ def create_app(db_uri: str):
 if __name__ == '__main__':
     app = create_app('mongodb://localhost:27017/doit')
     # app.run()
-
-
