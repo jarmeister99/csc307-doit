@@ -7,6 +7,8 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from app.models.tasks import Task
+
 def test_create_task_no_data(client):
     """
     This testcase tests the /tasks POST route with an empty payload

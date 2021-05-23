@@ -5,17 +5,18 @@ from bson.json_util import dumps
 
 class Task():
     def __init__(self, name, description, dueTime, userId=None, _id=None):
-
         self.name=name
         self.description = description
         self.dueTime = dueTime
         self.userId = userId
         self._id = uuid.uuid4().hex if _id is None else _id
+
     @classmethod
     def get_by_id(cls,_id):
         data = mongo.db['tasks'].find_one({'_id': _id})
         if data is not None:
             return cls(**data)
+
     @classmethod
     def get_all(cls):
         cur = mongo.db['tasks'].find()

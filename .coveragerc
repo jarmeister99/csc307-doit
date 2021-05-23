@@ -1,2 +1,5 @@
 [run]
 omit = ./venv/*, ./pytest_cache/*, ./__pycache__/*
+
+[report]
+show_missing = True
