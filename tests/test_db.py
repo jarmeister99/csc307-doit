@@ -43,4 +43,3 @@ def test_empty_db(db):
     """
     assert db['users'].count_documents({}) == 0
     assert db['todos'].count_documents({}) == 0
-
