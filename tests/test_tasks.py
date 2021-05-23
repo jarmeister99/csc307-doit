@@ -14,7 +14,7 @@ def test_create_task_no_data(client):
     This testcase tests the /tasks POST route with an empty payload
     """
     resp = client.post('/tasks',json={})
-    assert resp.status_code == 400 # bad request
+    assert resp.status_code == 401 # bad request
 
 def test_create_task_success(client, db):
     """
