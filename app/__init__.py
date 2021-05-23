@@ -40,4 +40,3 @@ def create_app(db_uri: str):
         from app.routes import user_routes
         from app.routes import task_routes
         return app
-
