@@ -15,6 +15,7 @@ def login_route():
         if not User.login_user(username=request.json['username'], password_hash=request.json['password_hash']): # validate password
             return {}, 401
         user = User.get_by_username(request.json['username']) 
+        user._id = None
         login_user(user)
         return {}, 200
 

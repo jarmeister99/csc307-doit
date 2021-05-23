@@ -8,18 +8,11 @@ from app.database import mongo
 
 class User(UserMixin):
     def __init__(self, username, email, password_hash, _id=None):
-
         self.username = username
         self.email = email
         self.password_hash = password_hash
-        self._id = uuid.uuid4().hex if _id is None else _id
+        self._id = ObjectId() if _id is None else _id
 
-    # def is_authenticated(self):
-    #     return True
-    # def is_active(self):
-    #     return True
-    # def is_anonymous(self):
-    #     return True
     def get_id(self):
         return self._id
 
@@ -70,4 +63,5 @@ class User(UserMixin):
 
 @login_manager.user_loader
 def load_user(user_id):
+    print("Loading in a user")
     return mongo.db['users'].find_one({'_id': ObjectId(user_id)})

@@ -9,7 +9,8 @@ class Task():
         self.description = description
         self.dueTime = dueTime
         self.userId = userId
-        self._id = uuid.uuid4().hex if _id is None else _id
+        # self._id = uuid.uuid4().hex if _id is None else _id
+        self._id = ObjectId() if _id is None else _id
 
     @classmethod
     def get_by_id(cls,_id):
