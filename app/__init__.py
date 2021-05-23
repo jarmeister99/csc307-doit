@@ -41,6 +41,3 @@ def create_app(db_uri: str):
         from app.routes import task_routes
         return app
 
-if __name__ == '__main__':
-    app = create_app('mongodb://localhost:27017/doit')
-    # app.run()
