@@ -1,0 +1,17 @@
+.button {
+    position:fixed;
+    
+}
+
+.buttons
+{
+   display: inline-block;
+   background-color:#CD4A49;
+   width: 100%;       /* set to 100% */
+   height: 100%;      /* set to 100% */
+   margin-bottom: 0.5em;
+   padding-top: .6em;
+   padding-bottom: .6em;
+   color: #fff;
+   clear:right;
+}

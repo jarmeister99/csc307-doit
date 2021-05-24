@@ -1,0 +1,60 @@
+.taskname {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -145px;
+    margin-left: -178px;
+
+}
+.taskdescription {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -110px;
+    margin-left: -217px;
+    
+}
+.submitbutton {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    
+    margin-left: 420px;
+    width: 40px
+}
+.button {
+    position:fixed;
+    background-color:#008CBA;
+    color:gainsboro;
+    text-align:center;
+    border-radius:4px;
+    border:none;
+    width:80px;
+    height: 27px;
+    margin-left:-290px;
+    margin-top: -145px;
+}
+
+.tbox {
+    border-radius:4px;
+    border-width:1px;
+    outline:none;
+    width:210px;
+}
+.descriptiontbox {
+    border-radius:4px;
+    border-width:1px;
+    outline:none;
+    width:200px;
+    width: 300px;
+    height: 100px;
+}
+
+
+
