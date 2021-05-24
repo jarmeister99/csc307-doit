@@ -43,7 +43,7 @@ function Tasks() {
                             <td>{task.title}</td>
                             <td>{task.due_date}</td>
                             {renderCompleted(task.completed)}
-                            <td><button className="buttons">Edit Task</button></td>
+                            <td><a href="http://localhost:3000/edittask"><button className="buttons" >Edit Task</button></a></td>
                         </tr>
                     )}
                 </tbody>
