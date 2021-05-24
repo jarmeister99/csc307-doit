@@ -26,7 +26,7 @@ function Login() {
 
     async function checkLogin(credentials){
         try {
-           const response = await axios.post('http://localhost:5000/login', credentials);
+           const response = await axios.post('http://localhost:5000/login', credentials, {withCredentials: true});
            console.log("here");
            return response;
         }
