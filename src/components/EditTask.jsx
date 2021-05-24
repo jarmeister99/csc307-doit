@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "../index.css"
-import "./EditTask.css"
+import "./css/EditTask.css"
 import axios from 'axios';
 
 function EditTask() {
