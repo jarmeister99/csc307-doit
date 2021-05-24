@@ -9,7 +9,7 @@ function Home() {
             <img
               className="img-fluid rounded mb-4 mb-lg-0"
               src="http://www.ajbubb.com/wp-content/uploads/2013/11/bc6b29f3665ca380acb4f9eefd9ab768.jpg"
-              alt="yo"
+              alt=""
               
             />
           </div>

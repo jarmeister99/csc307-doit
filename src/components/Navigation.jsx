@@ -42,6 +42,16 @@ function Navigation(props) {
                   <span className="sr-only">(current)</span>
                 </Link>
               </li>
+              <li
+                className={`nav-item  ${
+                  props.location.pathname === "/tasks" ? "active" : ""
+                }`}
+              >
+                <Link className="nav-link" to="/tasks">
+                  Tasks
+                  <span className="sr-only">(current)</span>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

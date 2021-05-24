@@ -7,6 +7,7 @@ import Login from "./components/Login"
 import Register from "./components/Register"
 import EditTask from "./components/EditTask"
 import Tasks from "./components/Tasks"
+import AddTask from "./components/AddTask";
 
 
 function MyApp() {
@@ -20,6 +21,7 @@ function MyApp() {
           <Route path="/tasks" exact component={() => <Tasks />} />
           <Route path="/register" exact component={() => <Register />} />
           <Route path="/edittask" exact component={() => <EditTask />} />
+          <Route path="/addtask" exact component={() => <AddTask />} />
         </Switch>
         <Footer />
       </Router>

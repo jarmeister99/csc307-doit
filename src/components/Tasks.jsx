@@ -28,6 +28,7 @@ function Tasks() {
     return (
         <div className="container">
             <h3 className="p-3 text-center">DO-IT - Tasks List</h3>
+            <a href="http://localhost:3000/addtask"><button className="addButton" >Add Task</button></a>
             <table className="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -35,6 +36,7 @@ function Tasks() {
                         <th>Due Date</th>
                         <th>Completed</th>
                         <th>Edit Task</th>
+                        <th>Delete Task</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +46,7 @@ function Tasks() {
                             <td>{task.due_date}</td>
                             {renderCompleted(task.completed)}
                             <td><a href="http://localhost:3000/edittask"><button className="buttons" >Edit Task</button></a></td>
+                            <td><a href="http://localhost:3000/deletetask"><button className="buttons" >Delete Task</button></a></td>
                         </tr>
                     )}
                 </tbody>
