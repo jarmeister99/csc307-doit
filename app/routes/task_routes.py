@@ -7,7 +7,7 @@ import flask_login
 from app.database import mongo
 
 @app.route('/tasks', methods=['GET','POST'])
-# @login_required
+@login_required
 def tasks_route():
     if request.method == 'POST': 
         #save task

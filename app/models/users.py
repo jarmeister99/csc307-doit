@@ -1,4 +1,3 @@
-import uuid
 from bson.objectid import ObjectId
 
 from flask_login.mixins import UserMixin
@@ -11,7 +10,7 @@ class User(UserMixin):
         self.username = username
         self.email = email
         self.password_hash = password_hash
-        self._id = ObjectId() if _id is None else _id
+        self._id = str(ObjectId()) if _id is None else _id
 
     def get_id(self):
         return self._id
@@ -64,4 +63,4 @@ class User(UserMixin):
 @login_manager.user_loader
 def load_user(user_id):
     print("Loading in a user")
-    return mongo.db['users'].find_one({'_id': ObjectId(user_id)})
+    return User.get_by_id(user_id)
