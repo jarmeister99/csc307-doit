@@ -25,7 +25,7 @@ function EditTask() {
     async function submitTask(){
         try
         {
-            const response = await axios.post('http://localhost:5000/tasks', task)
+            const response = await axios.post('http://localhost:5000/tasks', task,{withCredentials: true})
             console.log("task successfully submitted")
             return response
         }

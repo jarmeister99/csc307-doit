@@ -27,9 +27,8 @@ function Login() {
 
     async function checkLogin(credentials){
         try {
-            console.log(credentials['password_hash'])
-            const response = await axios.post('http://localhost:5000/login', credentials);
-            return response;
+           const response = await axios.post('http://localhost:5000/login', credentials, {withCredentials: true});
+           return response;
         }
         catch (error) {
            console.log(error);
