@@ -73,7 +73,7 @@ def test_create_task_bad_data(client):
 
 def test_get_two_tasks(client):
     """
-    This testcase tests the /tasks GET route with two entries in th edb
+    This testcase tests the /tasks GET route with two entries in the db
     """
     login_a(client)
 
