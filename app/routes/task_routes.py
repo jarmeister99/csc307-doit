@@ -17,12 +17,11 @@ def tasks_route():
             #not checking description to allow empty description
             return {},400
         #save task here  
-        if not Task.create_task(name=request.json['name'],description=request.json['description'],userId=flask_login.current_user.get_id()):
-            return {}, 400
+        Task.create_task(name=request.json['name'],description=request.json['description'],userId=flask_login.current_user.get_id())
         return {}, 201
     elif request.method == 'GET':
         #show all tasks
-        tasks = Task.get_all()
+        tasks = Task.get_all_by_user(user_id=flask_login.current_user.get_id())
         return tasks, 200
         
 

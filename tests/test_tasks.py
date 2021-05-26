@@ -2,22 +2,23 @@
 These testcases cover the /tasks route which is responsible for creating, modifying, deleting,
 and retrieving todo-list tasks
 """
+from json import loads
 import os
 import sys
 from flask_login import current_user
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-def login_a(client):
+def login_a(c):
     """
     auto login function
     """
     data = {'username': 'jared', 'password_hash': 0xABCD,
             'email': 'email@address.com'}
-    resp = client.post('/register', json=data,
+    resp = c.post('/register', json=data,
                        content_type='application/json')  # create user
 
     data = {'username': 'jared', 'password_hash': 0xABCD}
-    resp = client.post('/login', json=data,
+    resp = c.post('/login', json=data,
                        content_type='application/json')  # log in user
     assert current_user.is_authenticated
 
@@ -83,3 +84,20 @@ def test_get_two_tasks(client):
     client.post('/tasks', json=data2)
     resp = client.get('/tasks')
     assert resp.status_code == 200  # tasks were gotten
+
+def test_user_creates_task(client, db):
+    """
+    This testcase tests the /tasks POST and /tasks GET route with specific user data
+    """
+    login_a(client)
+
+    data = {'name': 'walk the dog', 'description': 'two blocks', 'dueTime': None}
+    client.post('/tasks', json=data)
+    resp = client.get('/tasks')
+    assert resp.status_code == 200
+
+    tasks = loads(resp.data)
+    t = tasks[0]
+
+    assert t.get('userId') == current_user.get_id()
+    assert t.get('name') == 'walk the dog'

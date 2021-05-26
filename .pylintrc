@@ -152,7 +152,8 @@ disable=print-statement,
         C0415, # ... see above
         redefined-outer-name, # the 'app' naming convention requires that we ignore this
         W0621, # ... see above
-        wrong-import-position # our project structure requires out of order imports
+        wrong-import-position, # our project structure requires out of order imports
+        unnecessary-comprehension # don't tell me how to live my life
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
