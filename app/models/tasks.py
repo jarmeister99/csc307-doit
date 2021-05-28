@@ -19,6 +19,13 @@ class Task():
             return cls(**data)
 
     @classmethod
+    def get_all(cls):
+        cur = mongo.db['tasks'].find()
+        list_cur = list(cur)
+        data = dumps(list_cur)
+        return data
+
+    @classmethod
     def get_all_by_user(cls, user_id):
         users = mongo.db['tasks'].find({"userId": user_id})
         users = list(users)
