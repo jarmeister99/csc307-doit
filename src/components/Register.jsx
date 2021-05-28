@@ -39,7 +39,6 @@ function Register() {
     async function checkLogin(credentials){
         try {
            credentials.password_hash = hashCode(credentials.password_hash);
-           console.log(credentials);
            const response = await axios.post('http://localhost:5000/register', credentials);
            return response;
         }
