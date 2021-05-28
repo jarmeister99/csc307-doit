@@ -24,6 +24,15 @@ def tasks_route():
         #show all tasks
         tasks = Task.get_all()
         return tasks, 200
+
+@app.route('/tasks/<id>', methods=['DELETE'])
+@login_required
+def delete_route(id):
+    if request.method == 'DELETE':
+        print('id:',id)
+        Task.delete_task(id)
+        return 200
+
         
 
 

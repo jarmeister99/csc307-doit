@@ -1,4 +1,5 @@
 import uuid
+import sys
 from bson.objectid import ObjectId
 from app.database import mongo
 from bson.json_util import dumps
@@ -10,7 +11,7 @@ class Task():
         self.dueTime = dueTime
         self.userId = userId
         # self._id = uuid.uuid4().hex if _id is None else _id
-        self._id = ObjectId() if _id is None else _id
+        self._id = str(ObjectId()) if _id is None else _id
 
     @classmethod
     def get_by_id(cls,_id):
@@ -32,6 +33,12 @@ class Task():
         new_task.save_to_db()
         return True
     
+    @classmethod
+    def delete_task(cls, _id):
+        print('before',_id)
+        mongo.db['tasks'].delete_one({_id:_id})
+        print('after')
+        return True
 
     def json(self):
         return {
