@@ -35,9 +35,7 @@ class Task():
     
     @classmethod
     def delete_task(cls, _id):
-        print('before',_id)
         mongo.db['tasks'].delete_one({_id:_id})
-        print('after')
         return True
 
     def json(self):
