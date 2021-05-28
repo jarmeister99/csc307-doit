@@ -62,5 +62,4 @@ class User(UserMixin):
 
 @login_manager.user_loader
 def load_user(user_id):
-    print("Loading in a user")
     return User.get_by_id(user_id)
