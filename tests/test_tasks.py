@@ -5,7 +5,6 @@ and retrieving todo-list tasks
 import os
 import sys
 from flask_login import current_user
-from bson.objectid import ObjectId
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -53,8 +52,8 @@ def test_delete_task_success(client,db):
     This testcase tests the /tasks POST route with a correct payload
     """
     login_a(client)
-
-    data = {'name': 'walk the dog', 'description': '', 'dueTime': None, '_id': '60b081d17e1496d85e2b98db'}
+    data = {'name': 'walk the dog', 'description': '', 'dueTime': None,
+    '_id': '60b081d17e1496d85e2b98db'}
     resp = client.post('/tasks', json=data)
     assert resp.status_code == 201  # task created successfully
     assert db['tasks'].count_documents(
