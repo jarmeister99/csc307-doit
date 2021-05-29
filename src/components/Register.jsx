@@ -30,7 +30,7 @@ function Register() {
         else
         setCredentials(
             {username: credentials['username'], 
-             password_hash: hashCode(credentials['password_hash']),
+             password_hash: credentials['password_hash'],
              email: value}   
         );
     }
@@ -38,20 +38,18 @@ function Register() {
 
     async function checkLogin(credentials){
         try {
+           credentials.password_hash = hashCode(credentials.password_hash);
            const response = await axios.post('http://localhost:5000/register', credentials);
-           console.log("here");
            return response;
         }
         catch (error) {
            console.log(error);
-           console.log("also here");
            return false;
         }
      }
 
 
     function submitLogin() {
-        console.log(credentials);
         checkLogin(credentials).then( result => {
             console.log(result.status);
             });

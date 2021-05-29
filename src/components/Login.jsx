@@ -16,7 +16,7 @@ function Login() {
         const { name, value } = event.target;
         if (name === "password")
         setCredentials(
-            {username: credentials['username'], password_hash: hashCode(value)}
+            {username: credentials['username'], password_hash: value}
         );
         else if (name === "username")
         setCredentials(
@@ -27,6 +27,7 @@ function Login() {
 
     async function checkLogin(credentials){
         try {
+           credentials.password_hash = hashCode(credentials.password_hash);
            const response = await axios.post('http://localhost:5000/login', credentials, {withCredentials: true});
            return response;
         }
@@ -38,7 +39,6 @@ function Login() {
 
 
     function submitLogin() {
-        console.log(credentials);
         checkLogin(credentials).then( result => {
             console.log(result.status);
             });    
