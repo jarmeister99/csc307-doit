@@ -32,6 +32,7 @@ function Login() {
            return response;
         }
         catch (error) {
+
            console.log(error);
            return false;
         }
@@ -39,10 +40,16 @@ function Login() {
 
 
     function submitLogin() {
+        if(document.getElementsByClassName('loginbutton').onclick === true){
+            window.alert("Login failed, please try again");
+        }
         checkLogin(credentials).then( result => {
             console.log(result.status);
             });    
         setCredentials({username: '', password_hash: ''});
+        window.location = "http://localhost:3000/tasks";
+      
+        
     }
 
 
@@ -73,6 +80,7 @@ function Login() {
                     <input type="button" class="button" value="Login" onClick={submitLogin} />
                 </div>
             </form>
+
         </div>
     );
 }

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "../index.css"
 import "./css/Tasks.css"
 
+
 function Tasks() {
     // tasks API not implemented yet but will return JSON in this form for future reference
     // {{id_1, title_1, due_data_1, ...}, {id_2, title_2, due_date_2, ...}, {id_3, title_3, due_data_3, ...}}
@@ -25,10 +26,14 @@ function Tasks() {
         }
     }
 
+
     return (
         <div className="container">
             <h3 className="p-3 text-center">DO-IT - Tasks List</h3>
             <a href="http://localhost:3000/addtask"><button className="addButton" >Add Task</button></a>
+            <a href="http://localhost:3000/tasks"><button className="weeklyButton" >Weekly View</button></a>
+            <a href="http://localhost:3000/tasks"><button className="monthlyButton" >Monthly View</button></a>
+            <a href="http://localhost:3000/tasks"><button className="dailyButton" >Daily View</button></a>
             <table className="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -46,7 +51,7 @@ function Tasks() {
                             <td>{task.due_date}</td>
                             {renderCompleted(task.completed)}
                             <td><a href="http://localhost:3000/edittask"><button className="buttons" >Edit Task</button></a></td>
-                            <td><a href="http://localhost:3000/deletetask"><button className="buttons" >Delete Task</button></a></td>
+                            <td><a href="http://localhost:3000/tasks"><button className="buttons" >Delete Task</button></a></td>
                         </tr>
                     )}
                 </tbody>
