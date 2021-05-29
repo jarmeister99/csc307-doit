@@ -23,6 +23,14 @@ def tasks_route():
         #show all tasks
         tasks = Task.get_all_by_user(user_id=flask_login.current_user.get_id())
         return tasks, 200
+
+@app.route('/tasks/<id>', methods=['DELETE'])
+@login_required
+def delete_route(id):
+    if request.method == 'DELETE':
+        Task.delete_task(id)
+        return 200
+
         
 
 
