@@ -29,7 +29,7 @@ def tasks_route():
 def delete_route(id):
     if request.method == 'DELETE':
         Task.delete_task(id)
-        return 200
+        return {}, 200
 
         
 
