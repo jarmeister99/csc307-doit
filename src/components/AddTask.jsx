@@ -8,6 +8,7 @@ function AddTask() {
         {
             name: '',
             description: '',
+            dueTime: ''
         }
     )
     function handleChange(event) {
@@ -15,16 +16,20 @@ function AddTask() {
         console.log("handlechange")
         if (name === "taskdescription")
         setTask(
-            {name: task.name, description: value}
+            {name: task.name, description: value, dueTime: task.dueTime}
         );
         else if (name === "taskname")
         setTask(
-            {name: value, description: task.description}   
+            {name: value, description: task.description, dueTime: task.dueTime}   
         );
     }
     async function submitTask(){
         try
         {
+            setTask(
+                {name: task.name, description: task.description, dueTime: '06.27.1999'}   
+            );
+            console.log(task);
             const response = await axios.post('http://localhost:5000/tasks', task,{withCredentials: true})
             console.log("task successfully submitted")
             return response
