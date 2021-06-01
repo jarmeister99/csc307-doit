@@ -35,8 +35,7 @@ class Task():
         
     @classmethod
     def create_task(cls, name, userId, description=None, dueTime=None):
-        #if task is None:
-        new_task = cls(name, description, dueTime, userId)
+        new_task = cls(name, description, dueTime,userId)
         new_task.save_to_db()
 
     @classmethod
