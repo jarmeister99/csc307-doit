@@ -17,8 +17,7 @@ def tasks_route():
             #not checking description to allow empty description
             return {},400
         #save task here  
-        if Task.create_task(name=request.json['name'],description=request.json['description'],userId=flask_login.current_user.get_id(), dueTime=request.json['dueTime']):
-            return {}, 400
+        Task.create_task(name=request.json['name'],description=request.json['description'],userId=flask_login.current_user.get_id(), dueTime=request.json['dueTime'])
         return {}, 201
     elif request.method == 'GET':
         #show all tasks
