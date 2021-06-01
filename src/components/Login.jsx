@@ -12,6 +12,13 @@ function Login() {
         }
     );
 
+    const [loggedIn, setLoggedIn] = useState(
+        {
+            attempted: false,
+            loggedIn: false
+        }
+    );
+
     function handleChange(event) {
         const { name, value } = event.target;
         if (name === "password")
@@ -27,13 +34,22 @@ function Login() {
 
     async function checkLogin(credentials){
         try {
-           credentials.password_hash = hashCode(credentials.password_hash);
-           const response = await axios.post('http://localhost:5000/login', credentials, {withCredentials: true});
-           return response;
+            setLoggedIn(
+                {attempted: true, loggedIn: false}
+            );
+
+            credentials.password_hash = hashCode(credentials.password_hash);
+            const response = await axios.post('http://localhost:5000/login', credentials, {withCredentials: true});
+
+            setLoggedIn(
+                {attempted: true, loggedIn: true}
+            );
+
+            return response;
         }
         catch (error) {
-           console.log(error);
-           return false;
+            console.log(error);
+            return false;
         }
      }
 
@@ -45,6 +61,17 @@ function Login() {
         setCredentials({username: '', password_hash: ''});
     }
 
+    function renderLoggedIn() {
+        if(loggedIn.attempted === false) {
+            return <div></div>;
+        }
+        else if(loggedIn.attempted === true && loggedIn.loggedIn === true) {
+            return <header style={{color:'green'}}>Logged In!</header>;
+        }
+        else{
+            return <p style={{color:'red'}}>Unsuccesful</p>;
+        }
+    }
 
     return (
         <div className="col-md-3">
@@ -71,6 +98,9 @@ function Login() {
                 </div>
                 <div className="loginbutton">
                     <input type="button" class="button" value="Login" onClick={submitLogin} />
+                </div>
+                <div className="loginrender">
+                    {renderLoggedIn()}
                 </div>
             </form>
         </div>

@@ -13,6 +13,13 @@ function Register() {
         }
     );
 
+    const [registered, setRegistered] = useState(
+        {
+            attempted: false,
+            correct: false
+        }
+    );
+
     function handleChange(event) {
         const { name, value } = event.target;
         if (name === "password")
@@ -38,13 +45,22 @@ function Register() {
 
     async function checkLogin(credentials){
         try {
-           credentials.password_hash = hashCode(credentials.password_hash);
-           const response = await axios.post('http://localhost:5000/register', credentials);
-           return response;
+            setRegistered(
+                {attempted: true, correct: false}
+            );
+            
+            credentials.password_hash = hashCode(credentials.password_hash);
+            const response = await axios.post('http://localhost:5000/register', credentials);
+
+            setRegistered(
+                {attempted: true, correct: true}
+            );
+
+            return response;
         }
         catch (error) {
-           console.log(error);
-           return false;
+            console.log(error);
+            return false;
         }
      }
 
@@ -56,6 +72,17 @@ function Register() {
         setCredentials({username: '', password_hash: '', email: ''});
     }
 
+    function renderRegister() {
+        if(registered.attempted === false) {
+            return <div></div>;
+        }
+        else if(registered.attempted === true && registered.correct === true) {
+            return <header style={{color:'green'}}>Created!</header>;
+        }
+        else{
+            return <p style={{color:'red'}}>Unsuccesful</p>;
+        }
+    }
 
     return (
         <form>
@@ -91,6 +118,9 @@ function Register() {
             </div>
             <div className="registerbutton">
                 <input type="button" className="button" value="Submit" onClick={submitLogin} />
+            </div>
+            <div className="registerrender">
+                    {renderRegister()}
             </div>
         </form>
     );
