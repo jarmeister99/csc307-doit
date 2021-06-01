@@ -1,9 +1,17 @@
 from app.models.users import User
 from flask.globals import current_app as app
 from flask import request
-from flask_login import login_user
+from flask_login import login_user, logout_user
+from flask_login.utils import login_required
 
 from app.database import mongo
+
+@app.route('/logout', methods=['POST'])
+@login_required
+def logout_route():
+    if request.method == 'POST':
+        logout_user()
+        return {}, 200
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_route():
