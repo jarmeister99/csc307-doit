@@ -6,7 +6,7 @@ import flask_login
 
 from app.database import mongo
 
-@app.route('/tasks', methods=['GET','POST'])
+@app.route('/tasks', methods=['GET','POST', 'PATCH'])
 @login_required
 def tasks_route():
     if request.method == 'POST': 
@@ -23,6 +23,9 @@ def tasks_route():
         #show all tasks
         tasks = Task.get_all_by_user(user_id=flask_login.current_user.get_id())
         return tasks, 200
+    elif request.method == 'PATCH':
+        Task.modify_task(request.json)
+        return {}, 200
 
 @app.route('/tasks/<id>', methods=['DELETE'])
 @login_required

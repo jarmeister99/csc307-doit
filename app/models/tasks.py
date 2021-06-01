@@ -38,6 +38,13 @@ class Task():
         #if task is None:
         new_task = cls(name, description, dueTime, userId)
         new_task.save_to_db()
+
+    @classmethod
+    def modify_task(cls, json_data):
+        id = json_data['_id']
+        json_data.pop('_id')
+        new_values = {"$set": json_data}
+        mongo.db['tasks'].update_one({'_id': id}, new_values)
     
     @classmethod
     def delete_task(cls, _id):

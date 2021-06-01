@@ -137,3 +137,30 @@ def test_get_all_tasks(client, db):
     assert len(task_data) == 1
 
     assert task_data[0].get('name') == 'walk the dog'
+
+def test_modify_task(client, db):
+    """
+    This testcase tests the /tasks PATCH route by ensuring that user data can be changed
+    """
+    login_a(client)
+
+    data = {'name': 'walk the dog', 'description': 'two blocks', 'dueTime': None}
+    client.post('/tasks', json=data)
+    resp = client.get('/tasks')
+    assert resp.status_code == 200
+
+    tasks = loads(resp.data)
+    t = tasks[0]
+
+    t_id = t.get('_id')
+    patch_data = {'_id': t_id, 'name': 'run the dog'}
+    resp = client.patch('tasks', json=patch_data)
+    assert resp.status_code == 200
+
+    resp = client.get('/tasks')
+    assert resp.status_code == 200
+
+    tasks = loads(resp.data)
+    t = tasks[0]
+
+    assert t.get('name') == 'run the dog'
