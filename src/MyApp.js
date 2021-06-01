@@ -7,7 +7,8 @@ import Login from "./components/Login"
 import Register from "./components/Register"
 import EditTask from "./components/EditTask"
 import Tasks from "./components/Tasks"
-import AddTask from "./components/AddTask";
+import AddTask from "./components/AddTask"
+import MonthView from "./components/MonthView"
 
 
 function MyApp() {
@@ -22,6 +23,7 @@ function MyApp() {
           <Route path="/register" exact component={() => <Register />} />
           <Route path="/edittask" exact component={() => <EditTask />} />
           <Route path="/addtask" exact component={() => <AddTask />} />
+          <Route path="/monthview" exact component={() => <MonthView />} />
         </Switch>
         <Footer />
       </Router>
