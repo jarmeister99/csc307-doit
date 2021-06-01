@@ -47,8 +47,8 @@ class Task():
     
     @classmethod
     def delete_task(cls, _id):
-        mongo.db['tasks'].delete_one({_id:_id})
-        return True
+        x = mongo.db['tasks'].delete_one({'_id': _id})
+        return x.deleted_count > 0
 
     def json(self):
         return {

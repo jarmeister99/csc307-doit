@@ -6,9 +6,10 @@ import flask_login
 
 from app.database import mongo
 
-@app.route('/tasks', methods=['GET','POST', 'PATCH'])
+@app.route('/tasks', methods=['GET','POST', 'PATCH', 'DELETE'])
 @login_required
 def tasks_route():
+
     if request.method == 'POST': 
         #save task
         if not request.json:
@@ -26,13 +27,19 @@ def tasks_route():
     elif request.method == 'PATCH':
         Task.modify_task(request.json)
         return {}, 200
-
-@app.route('/tasks/<id>', methods=['DELETE'])
-@login_required
-def delete_route(id):
-    if request.method == 'DELETE':
-        Task.delete_task(id)
+    elif request.method == 'DELETE':
+        if request.json.get('id') is None or request.json.get('id') == '':
+            return {}, 400
+        if not Task.delete_task(request.json.get('id')):
+            return {}, 404
         return {}, 200
+
+# @app.route('/tasks/<id>', methods=['DELETE'])
+# @login_required
+# def delete_route(id):
+#     if request.method == 'DELETE':
+#         Task.delete_task(id)
+#         return {}, 200
 
         
 
