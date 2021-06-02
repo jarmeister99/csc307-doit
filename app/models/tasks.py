@@ -50,6 +50,10 @@ class Task():
         x = mongo.db['tasks'].delete_one({'_id': _id})
         return x.deleted_count > 0
 
+    @classmethod
+    def delete_all_by_user(cls, userId):
+        x = mongo.db['tasks'].delete_many({'userId': userId})
+
     def json(self):
         return {
             '_id': self._id,

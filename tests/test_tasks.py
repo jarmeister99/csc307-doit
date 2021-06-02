@@ -194,3 +194,20 @@ def test_modify_task(client, db):
     t = tasks[0]
 
     assert t.get('name') == 'run the dog'
+
+def test_delete_all(client, db):
+    """
+    This testcase tests the /tasks DELETE route to remove all user data
+    """
+    login_a(client)
+    data = {'name': 'walk the dog', 'description': '', 'dueTime': None}
+    resp = client.post('/tasks', json=data)
+    assert resp.status_code == 201  # task created successfully
+    assert db['tasks'].count_documents({'name': 'walk the dog'}) == 1  # task present in database
+
+    data = {'delete_all': True}
+    resp = client.delete('/tasks', json=data)
+
+    resp = client.get('/tasks')
+    tasks = loads(resp.data)
+    assert len(tasks) == 0

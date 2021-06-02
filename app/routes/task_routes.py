@@ -27,6 +27,8 @@ def tasks_route():
         Task.modify_task(request.json)
         return {}, 200
     elif request.method == 'DELETE':
+        if request.json.get('delete_all') is True:
+            Task.delete_all_by_user(userId=flask_login.current_user.get_id())
         if request.json.get('id') is None or request.json.get('id') == '':
             return {}, 400
         if not Task.delete_task(request.json.get('id')):
