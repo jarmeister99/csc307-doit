@@ -24,13 +24,27 @@ function Tasks() {
         }
     }
 
-    async function fetchAll(){
+    async function submitDelete(task) {
         try {
-           const response = await axios.get('http://localhost:5000/tasks', {withCredentials: true});
+            console.log(task._id);
+            const response = await axios.delete('http://localhost:5000/tasks', 
+                {withCredentials: true, data: {id: task._id}});
+            window.location.reload(false);
+            return response.data;
+         }
+         catch (error){
+            console.log(error); 
+            return false;         
+         }
+    }
+
+    async function fetchAll() {
+        try {
+           const response = await axios.get('http://localhost:5000/tasks', {
+               withCredentials: true});
            return response.data;
         }
         catch (error){
-           //We're not handling errors. Just logging into the console.
            console.log(error); 
            return false;         
         }
@@ -57,7 +71,13 @@ function Tasks() {
                             <td>{task.dueTime}</td>
                             {renderCompleted(task.completed)}
                             <td><a href="http://localhost:3000/edittask"><button className="buttons" >Edit Task</button></a></td>
-                            <td><a href="http://localhost:3000/deletetask"><button className="buttons" >Delete Task</button></a></td>
+                            <td>
+                                <button 
+                                    className="buttons" 
+                                    onClick={() => submitDelete(task)}> 
+                                    Delete Task
+                                </button>
+                            </td>
                         </tr>
                     )}
                 </tbody>
