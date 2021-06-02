@@ -61,7 +61,7 @@ function EditTask() {
                         nativeInputAriaLabel="Date and time"
                         onChange={dateChange}
                         secondAriaLabel="Second"
-                        value={task.dueTime}
+                        value={new Date(task.dueTime)}
                         yearAriaLabel="Year"
                     />
                 </div>
