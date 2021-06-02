@@ -69,7 +69,7 @@ function Login() {
             return <header style={{color:'green'}}>Logged In!</header>;
         }
         else{
-            return <p style={{color:'red'}}>Unsuccesful</p>;
+            return <p style={{color:'red'}}>Unsuccessful</p>;
         }
     }
 

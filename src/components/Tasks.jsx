@@ -121,7 +121,7 @@ function Tasks() {
             <button 
                 className="buttons" 
                 onClick={() => submitDeleteAll()}>
-                Delete All tasks
+                Delete All Tasks
             </button>
         </div>
     );

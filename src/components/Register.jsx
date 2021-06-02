@@ -80,7 +80,7 @@ function Register() {
             return <header style={{color:'green'}}>Created!</header>;
         }
         else{
-            return <p style={{color:'red'}}>Unsuccesful</p>;
+            return <p style={{color:'red'}}>Unsuccessful</p>;
         }
     }
 
