@@ -24,13 +24,27 @@ function Tasks() {
         }
     }
 
-    async function fetchAll(){
+    async function submitDelete(task) {
         try {
-           const response = await axios.get('http://localhost:5000/tasks', {withCredentials: true});
+            console.log(task._id);
+            const response = await axios.delete('http://localhost:5000/tasks', 
+                {withCredentials: true, data: {id: task._id}});
+            window.location.reload(false);
+            return response.data;
+         }
+         catch (error){
+            console.log(error); 
+            return false;         
+         }
+    }
+
+    async function fetchAll() {
+        try {
+           const response = await axios.get('http://localhost:5000/tasks', {
+               withCredentials: true});
            return response.data;
         }
         catch (error){
-           //We're not handling errors. Just logging into the console.
            console.log(error); 
            return false;         
         }
@@ -40,6 +54,9 @@ function Tasks() {
         <div className="container">
             <h3 className="p-3 text-center">DO-IT - Tasks List</h3>
             <a href="http://localhost:3000/addtask"><button className="addButton" >Add Task</button></a>
+            <a href="http://localhost:3000/tasks"><button className="weeklyButton" >Weekly View</button></a>
+            <a href="http://localhost:3000/tasks"><button className="monthlyButton" >Monthly View</button></a>
+            <a href="http://localhost:3000/tasks"><button className="dailyButton" >Daily View</button></a>
             <table className="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -57,7 +74,13 @@ function Tasks() {
                             <td>{task.dueTime}</td>
                             {renderCompleted(task.completed)}
                             <td><a href="http://localhost:3000/edittask"><button className="buttons" >Edit Task</button></a></td>
-                            <td><a href="http://localhost:3000/deletetask"><button className="buttons" >Delete Task</button></a></td>
+                            <td>
+                                <button 
+                                    className="buttons" 
+                                    onClick={() => submitDelete(task)}> 
+                                    Delete Task
+                                </button>
+                            </td>
                         </tr>
                     )}
                 </tbody>
