@@ -54,6 +54,9 @@ function Tasks() {
         <div className="container">
             <h3 className="p-3 text-center">DO-IT - Tasks List</h3>
             <a href="http://localhost:3000/addtask"><button className="addButton" >Add Task</button></a>
+            <a href="http://localhost:3000/tasks"><button className="weeklyButton" >Weekly View</button></a>
+            <a href="http://localhost:3000/tasks"><button className="monthlyButton" >Monthly View</button></a>
+            <a href="http://localhost:3000/tasks"><button className="dailyButton" >Daily View</button></a>
             <table className="table table-striped table-bordered">
                 <thead>
                     <tr>
