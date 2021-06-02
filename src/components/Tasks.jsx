@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { useHistory } from "react-router-dom";
 import "../index.css"
 import "./css/Tasks.css"
 import axios from 'axios';
@@ -14,7 +15,9 @@ function Tasks() {
                   setTasks(result);
              });
     }, [] );
+    
 
+    var history = useHistory()
     // Returns a conditional render of the completed status of a task
     function checkDate(date) {
         if (date) {
@@ -35,6 +38,12 @@ function Tasks() {
             console.log(error); 
             return false;         
          }
+    }
+    async function editTask(task) {
+        
+        console.log(this)
+        history.push({pathname: '/edittask', state: {data: task}})
+        
     }
 
     async function submitDeleteAll(task) {
@@ -91,9 +100,10 @@ function Tasks() {
                                     Finish Task!
                                 </button>
                             </td>
-                            <td><a href="http://localhost:3000/edittask">
+                            <td><a>
                                 <button 
-                                    className="buttonEdit" >
+                                    className="buttonEdit" 
+                                    onClick={() => editTask(task)}>
                                     Edit Task
                                     </button>
                                 </a></td>
