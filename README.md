@@ -19,5 +19,7 @@ Ex: pip install -r requirements.txt
 4. Set FLASK_APP environmental variable
 Ex: export FLASK_APP=doit.py
 
-5. Run backend
+5. Download, install, and run mongodb (https://docs.mongodb.com/manual/installation/)
+
+6. Run backend
 Ex: flask run

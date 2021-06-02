@@ -9,8 +9,7 @@ from app.database import mongo
 @app.route('/tasks', methods=['GET','POST', 'PATCH', 'DELETE'])
 @login_required
 def tasks_route():
-
-    if request.method == 'POST': 
+    if request.method == 'POST':
         #save task
         if not request.json:
             return {}, 400
@@ -33,14 +32,3 @@ def tasks_route():
         if not Task.delete_task(request.json.get('id')):
             return {}, 404
         return {}, 200
-
-# @app.route('/tasks/<id>', methods=['DELETE'])
-# @login_required
-# def delete_route(id):
-#     if request.method == 'DELETE':
-#         Task.delete_task(id)
-#         return {}, 200
-
-        
-
-
