@@ -91,7 +91,7 @@ function EditTask() {
                     <input
                         type="button"
                         class="button"
-                        value="Add Task"
+                        value="Edit Task"
                         onClick={submitTask}
                     />
                 </div>
