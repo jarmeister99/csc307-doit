@@ -71,7 +71,7 @@ function Tasks() {
                     {tasks && tasks.map(task =>
                         <tr key={task.id}>
                             <td>{task.name}</td>
-                            <td>{task.dueTime}</td>
+                            <td>{task.dueTime.substring(0,10)}</td>
                             {renderCompleted(task.completed)}
                             <td><a href="http://localhost:3000/edittask"><button className="buttons" >Edit Task</button></a></td>
                             <td>
