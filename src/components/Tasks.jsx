@@ -16,11 +16,11 @@ function Tasks() {
     }, [] );
 
     // Returns a conditional render of the completed status of a task
-    function renderCompleted(completed) {
-        if (completed) {
-          return <td>Yes</td>;
+    function checkDate(date) {
+        if (date) {
+          return date.substring(0,10);
         } else {
-          return <td>No</td>;
+          return;
         }
     }
 
@@ -73,7 +73,8 @@ function Tasks() {
                         <tr key={task.id}>
                             <td>{task.name}</td>
                             <td width='30%'>{task.description}</td>
-                            <td>{task.dueTime.substring(0,10)}</td>
+                            <td>{checkDate(task.dueTime)}
+                            </td>
                             <td>
                                 <button 
                                     className="buttonComplete"      // complete just deletes the task, sorry not sorry
