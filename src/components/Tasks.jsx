@@ -70,7 +70,7 @@ function Tasks() {
                 </thead>
                 <tbody>
                     {tasks && tasks.map(task =>
-                        <tr key={task.id}>
+                        <tr key={task._id}>
                             <td>{task.name}</td>
                             <td width='30%'>{task.description}</td>
                             <td>{checkDate(task.dueTime)}
