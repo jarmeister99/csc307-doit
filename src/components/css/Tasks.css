@@ -16,6 +16,32 @@
    clear:right;
 }
 
+.buttonComplete
+{
+   display: inline-block;
+   background-color:#74e7fc;
+   width: 100%;       /* set to 100% */
+   height: 100%;      /* set to 100% */
+   margin-bottom: 0.5em;
+   padding-top: .6em;
+   padding-bottom: .6em;
+   color: #fff;
+   clear:right;
+}
+
+.buttonEdit
+{
+   display: inline-block;
+   background-color:#fda761;
+   width: 100%;       /* set to 100% */
+   height: 100%;      /* set to 100% */
+   margin-bottom: 0.5em;
+   padding-top: .6em;
+   padding-bottom: .6em;
+   color: #fff;
+   clear:right;
+}
+
 .addButton {
    
     display: inline-block;

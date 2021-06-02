@@ -61,6 +61,7 @@ function Tasks() {
                 <thead>
                     <tr>
                         <th>Title</th>
+                        <th>Description</th>
                         <th>Due Date</th>
                         <th>Completed</th>
                         <th>Edit Task</th>
@@ -71,9 +72,21 @@ function Tasks() {
                     {tasks && tasks.map(task =>
                         <tr key={task.id}>
                             <td>{task.name}</td>
+                            <td width='30%'>{task.description}</td>
                             <td>{task.dueTime.substring(0,10)}</td>
-                            {renderCompleted(task.completed)}
-                            <td><a href="http://localhost:3000/edittask"><button className="buttons" >Edit Task</button></a></td>
+                            <td>
+                                <button 
+                                    className="buttonComplete"      // complete just deletes the task, sorry not sorry
+                                    onClick={() => submitDelete(task)}> 
+                                    Finish Task!
+                                </button>
+                            </td>
+                            <td><a href="http://localhost:3000/edittask">
+                                <button 
+                                    className="buttonEdit" >
+                                    Edit Task
+                                    </button>
+                                </a></td>
                             <td>
                                 <button 
                                     className="buttons" 
