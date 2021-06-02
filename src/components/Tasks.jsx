@@ -26,9 +26,21 @@ function Tasks() {
 
     async function submitDelete(task) {
         try {
-            console.log(task._id);
             const response = await axios.delete('http://localhost:5000/tasks', 
                 {withCredentials: true, data: {id: task._id}});
+            window.location.reload(false);
+            return response.data;
+         }
+         catch (error){
+            console.log(error); 
+            return false;         
+         }
+    }
+
+    async function submitDeleteAll(task) {
+        try {
+            const response = await axios.delete('http://localhost:5000/tasks', 
+                {withCredentials: true, data: {delete_all: true}});
             window.location.reload(false);
             return response.data;
          }
@@ -54,9 +66,6 @@ function Tasks() {
         <div className="container">
             <h3 className="p-3 text-center">DO-IT - Tasks List</h3>
             <a href="http://localhost:3000/addtask"><button className="addButton" >Add Task</button></a>
-            <a href="http://localhost:3000/tasks"><button className="weeklyButton" >Weekly View</button></a>
-            <a href="http://localhost:3000/tasks"><button className="monthlyButton" >Monthly View</button></a>
-            <a href="http://localhost:3000/tasks"><button className="dailyButton" >Daily View</button></a>
             <table className="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -99,6 +108,11 @@ function Tasks() {
                     )}
                 </tbody>
             </table>
+            <button 
+                className="buttons" 
+                onClick={() => submitDeleteAll()}>
+                Delete All tasks
+            </button>
         </div>
     );
   }
